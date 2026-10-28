@@ -5,11 +5,26 @@
   "functions": {
     "api/[...path].js": {
       "maxDuration": 30
+    },
+    "api/admin/[...path].js": {
+      "maxDuration": 30
+    },
+    "api/admin/content/[...path].js": {
+      "maxDuration": 30
+    },
+    "api/analytics/[...path].js": {
+      "maxDuration": 30
+    },
+    "api/auth/[...path].js": {
+      "maxDuration": 30
+    },
+    "api/public/[...path].js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api(?:/|$)).*)",
       "destination": "/index.html"
     }
   ]
