@@ -165,4 +165,6 @@ export interface CMSContentEntry {
   scheduledAt: string;
   published: boolean;
   updatedAt?: string;
+  publishedAt?: string;
+  expiresAt?: string;
 }

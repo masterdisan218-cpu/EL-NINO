@@ -237,8 +237,10 @@ export const AdminPage: React.FC = () => {
   };
 
   const startEdit = (entry: CMSContentEntry) => {
-    const { id, updatedAt, ...content } = entry;
+    const { id, updatedAt, publishedAt, expiresAt, ...content } = entry;
     void updatedAt;
+    void publishedAt;
+    void expiresAt;
     setEditingId(id);
     setDraft(content);
     setFormError('');
@@ -272,8 +274,10 @@ export const AdminPage: React.FC = () => {
   };
 
   const togglePublished = async (entry: CMSContentEntry) => {
-    const { id, updatedAt, ...content } = entry;
+    const { id, updatedAt, publishedAt, expiresAt, ...content } = entry;
     void updatedAt;
+    void publishedAt;
+    void expiresAt;
     try {
       await updateEntry(id, { ...content, published: !entry.published });
     } catch (error) {
@@ -769,22 +773,27 @@ export const AdminPage: React.FC = () => {
             </div>
             {loadingEntries ? <p className="py-8 text-center text-sm text-slate-500">Loading content…</p> : filteredEntries.length === 0 ? <p className="py-8 text-center text-sm text-slate-500">{searchQuery ? 'No matching content.' : 'No content found.'}</p> : (
               <ul className="space-y-3">
-                {filteredEntries.map((entry) => (
+                {filteredEntries.map((entry) => {
+                  const expiredUpdate = entry.kind === 'update' && entry.published && entry.expiresAt
+                    && Date.parse(entry.expiresAt) <= Date.now();
+                  const scheduledUpdate = entry.published && entry.scheduledAt && Date.parse(entry.scheduledAt) > Date.now();
+                  return (
                   <li key={entry.id} className="rounded-xl border border-slate-200 p-3">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-ocean-700">{labels[entry.kind]}</span>
                         <h3 className="truncate text-sm font-bold text-slate-900">{entry.titleEn || 'Untitled content'}</h3>
-                        <p className="mt-1 text-xs text-slate-500">{entry.published && entry.scheduledAt && Date.parse(entry.scheduledAt) > Date.now() ? `Scheduled · ${new Date(entry.scheduledAt).toLocaleString()}` : entry.published ? 'Published' : 'Private draft'} · {entry.pagePath}</p>
+                        <p className="mt-1 text-xs text-slate-500">{expiredUpdate ? 'Expired · hidden from public' : scheduledUpdate ? `Scheduled · ${new Date(entry.scheduledAt).toLocaleString()}` : entry.published ? 'Published' : 'Private draft'} · {entry.pagePath}</p>
                       </div>
                       {canEditContent && <div className="flex shrink-0 gap-1">
-                        <button aria-label={entry.published ? 'Unpublish' : 'Publish'} title={entry.published ? 'Unpublish' : 'Publish'} onClick={() => void togglePublished(entry)} className={`rounded-lg px-2 py-1 text-xs font-bold ${entry.published ? entry.scheduledAt && Date.parse(entry.scheduledAt) > Date.now() ? 'bg-sky-50 text-sky-800' : 'bg-emerald-50 text-emerald-800' : 'bg-amber-50 text-amber-800'}`}>{entry.published ? entry.scheduledAt && Date.parse(entry.scheduledAt) > Date.now() ? 'Scheduled' : 'Live' : 'Draft'}</button>
+                        <button aria-label={entry.published ? 'Unpublish' : 'Publish'} title={entry.published ? 'Unpublish' : 'Publish'} onClick={() => void togglePublished(entry)} className={`rounded-lg px-2 py-1 text-xs font-bold ${entry.published ? expiredUpdate ? 'bg-slate-100 text-slate-700' : scheduledUpdate ? 'bg-sky-50 text-sky-800' : 'bg-emerald-50 text-emerald-800' : 'bg-amber-50 text-amber-800'}`}>{entry.published ? expiredUpdate ? 'Expired' : scheduledUpdate ? 'Scheduled' : 'Live' : 'Draft'}</button>
                         <button aria-label="Edit content" title="Edit" onClick={() => startEdit(entry)} className="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100"><Pencil className="h-4 w-4" /></button>
                         <button aria-label="Delete content" title="Delete" onClick={() => void handleDelete(entry)} className="rounded-lg p-1.5 text-rose-700 hover:bg-rose-50"><Trash2 className="h-4 w-4" /></button>
                       </div>}
                     </div>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             )}
           </section>
