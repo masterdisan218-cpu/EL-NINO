@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title description">
+  <title id="title">Schematic examples of El Niño weather influences</title>
+  <desc id="description">Three illustrated weather patterns: increased rain in parts of western South America, drier conditions in parts of Indonesia and Australia, and shifts in seasonal rainfall elsewhere. These are tendencies, not local forecasts.</desc>
+  <rect width="640" height="360" rx="28" fill="#f8fafc"/>
+  <text x="320" y="42" text-anchor="middle" fill="#0f2942" font-family="Arial, sans-serif" font-size="21" font-weight="700">Weather influences vary by region</text>
+  <g transform="translate(40 79)">
+    <rect width="170" height="210" rx="20" fill="#ecfeff" stroke="#a5f3fc" stroke-width="2"/>
+    <circle cx="85" cy="68" r="30" fill="#bfdbfe"/>
+    <path d="M57 71c0-10 8-17 18-17 4-9 17-10 23-2 11-2 18 5 18 13s-7 12-15 12H70c-8 0-13-2-13-6Z" fill="#fff" stroke="#7dd3fc" stroke-width="2"/>
+    <path d="M72 84v13m15-13v16m15-16v13" stroke="#0284c7" stroke-linecap="round" stroke-width="4"/>
+    <text x="85" y="133" text-anchor="middle" fill="#0f2942" font-family="Arial, sans-serif" font-size="15" font-weight="700">Wetter risk</text>
+    <text x="85" y="155" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">Parts of western</text>
+    <text x="85" y="174" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">South America</text>
+  </g>
+  <g transform="translate(235 79)">
+    <rect width="170" height="210" rx="20" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+    <circle cx="85" cy="68" r="31" fill="#fde68a"/>
+    <path d="M85 22v13m0 66v13M39 68h13m66 0h13M52 35l10 10m46 46 10 10m0-66-10 10m-46 46-10 10" stroke="#f59e0b" stroke-linecap="round" stroke-width="5"/>
+    <circle cx="85" cy="68" r="20" fill="#fbbf24"/>
+    <text x="85" y="133" text-anchor="middle" fill="#0f2942" font-family="Arial, sans-serif" font-size="15" font-weight="700">Drier risk</text>
+    <text x="85" y="155" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">Parts of Indonesia</text>
+    <text x="85" y="174" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">and Australia</text>
+  </g>
+  <g transform="translate(430 79)">
+    <rect width="170" height="210" rx="20" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+    <path d="M43 69c0-13 11-23 24-23 6-12 24-13 33-2 14-2 25 7 25 18 0 11-10 17-21 17H62c-12 0-19-4-19-10Z" fill="#fff" stroke="#86efac" stroke-width="2"/>
+    <path d="M61 84v14m23-14v17m23-17v14" stroke="#16a34a" stroke-linecap="round" stroke-width="4"/>
+    <path d="M50 110h70" stroke="#94a3b8" stroke-dasharray="5 6" stroke-width="2"/>
+    <text x="85" y="145" text-anchor="middle" fill="#0f2942" font-family="Arial, sans-serif" font-size="15" font-weight="700">Shifting seasons</text>
+    <text x="85" y="167" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">Monsoons and</text>
+    <text x="85" y="186" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="13">rainfall elsewhere</text>
+  </g>
+  <text x="320" y="326" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="13">Illustrative tendencies · not a forecast or a map of observed impacts</text>
+</svg>
